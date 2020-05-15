@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
-
+using UnityEngine.UI;
 public class ExamineSystem : MonoBehaviour
 {
-    private Canvas ExamineCanvas; // Assign in inspector
+    private Canvas ExamineCanvas; 
+
     bool visible = false;
 
     void Awake()

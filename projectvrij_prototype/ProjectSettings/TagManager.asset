@@ -7,6 +7,8 @@ TagManager:
   - teleportable
   - examinable
   - ExamineCanvas
+  - fribg
+  - pickup
   layers:
   - Default
   - TransparentFX
