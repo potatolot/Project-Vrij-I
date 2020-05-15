@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class PlayerInput : MonoBehaviour
+public class Control : MonoBehaviour
 {
     Ray ray;
-    RaycastHit hit;
+    public RaycastHit hit;
 
     GameObject PlayerObject;
     GameObject ExaminableObj;
     GameObject TeleportObj;
-  
 
     FridgeDoor fridged;
     TeleportIW teleport;
@@ -32,6 +31,7 @@ public class PlayerInput : MonoBehaviour
         teleport = GameObject.Find("TeleportTEST").GetComponent<TeleportIW>();
         examinesys = GameObject.Find("ExamineCanvas").GetComponent<ExamineSystem>();
         fridged = GameObject.Find("FridgeDoor2").GetComponent<FridgeDoor>();
+
     }
 
     // Update is called once per frame
@@ -42,6 +42,7 @@ public class PlayerInput : MonoBehaviour
         ExamineObj();
         Teleport();
         openFridgeDoor();
+
      
     }
 
@@ -50,6 +51,7 @@ public class PlayerInput : MonoBehaviour
     //shows the examine box & text, this probably is really broken
     void ExamineObj()
     {
+        
         float distance = Vector3.Distance(ExaminableObj.transform.position, PlayerObject.transform.position);
         //showing the text doesn't work?
         if (distance < minDistanceToObject && hit.collider.tag == "examinable" && Input.GetKeyDown(KeyCode.E))
@@ -94,4 +96,5 @@ public class PlayerInput : MonoBehaviour
             
         }
     }
+
 }
