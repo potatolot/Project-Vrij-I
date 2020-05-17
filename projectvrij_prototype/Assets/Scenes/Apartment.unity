@@ -3463,7 +3463,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &436376401
 MonoBehaviour:
@@ -5616,6 +5616,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998020252}
+  - component: {fileID: 998020255}
+  - component: {fileID: 998020254}
   - component: {fileID: 998020253}
   m_Layer: 0
   m_Name: Oven
@@ -5639,7 +5641,35 @@ Transform:
   m_Father: {fileID: 335655800}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &998020253
+--- !u!54 &998020253
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998020251}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &998020254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998020251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f36582c7ed18644ebc7833b671bacd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &998020255
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5650,8 +5680,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.197246, y: 1.5756851, z: 1.2799846}
-  m_Center: {x: 0.0070321155, y: 0.28784445, z: -7.610324}
+  m_Size: {x: 0.9999999, y: 1.0322542, z: 1.1005939}
+  m_Center: {x: 3.8824602e-16, y: 0.5146558, z: -7.572304}
 --- !u!1 &1002912535
 GameObject:
   m_ObjectHideFlags: 0
@@ -9152,7 +9182,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 126
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &1485191254
 BoxCollider:
@@ -10573,7 +10603,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!43 &1670755397
 Mesh:
@@ -12647,7 +12677,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!114 &2124531454
 MonoBehaviour:
@@ -13505,6 +13535,9 @@ GameObject:
   - component: {fileID: 3912420118002445616}
   - component: {fileID: 5851746898076427894}
   - component: {fileID: 9124640719902019097}
+  - component: {fileID: 5850764728885034476}
+  - component: {fileID: 5850764728885034477}
+  - component: {fileID: 5850764728885034478}
   m_Layer: 0
   m_Name: oven2
   m_TagString: Untagged
@@ -13512,6 +13545,47 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5850764728885034476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850764728885034475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f36582c7ed18644ebc7833b671bacd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &5850764728885034477
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850764728885034475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 91.83716, y: 103.44013, z: 100.00004}
+  m_Center: {x: 9.738287, y: 51.720066, z: -0.0000058995447}
+--- !u!54 &5850764728885034478
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5850764728885034475}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!33 &5851746898076427894
 MeshFilter:
   m_ObjectHideFlags: 0

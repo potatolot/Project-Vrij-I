@@ -2,35 +2,42 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUp : MonoBehaviour
 {
     public Transform dest;
-    
+
     bool pickedup = false;
+    bool hover = false;
 
     private void Start()
     {
-       
+
     }
 
     private void Update()
     {
-        
-       
+        PickUpItem();
     }
 
     void OnMouseOver()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PickUpItem();
-        }
+        hover = true;
+        Debug.Log("hovered:" + hover);
+    }
+
+    private void OnMouseExit()
+    {
+        hover = false;
+        Debug.Log("hovered:" + hover);
     }
 
     void PickUpItem()
     {
-        if (!pickedup)
+        if (Input.GetKeyDown(KeyCode.E))
+        { 
+            if (!pickedup && hover)
         {
             GetComponent<Rigidbody>().useGravity = false; //turn off gravity
             GetComponent<Rigidbody>().freezeRotation = true;
@@ -51,7 +58,8 @@ public class PickUp : MonoBehaviour
             pickedup = false;
             Debug.Log("pickedup=" + pickedup);
         }
-            
+        }
+
     }
 
         
