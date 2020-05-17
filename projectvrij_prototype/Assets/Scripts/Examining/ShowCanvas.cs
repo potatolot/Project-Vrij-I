@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
 using UnityEngine.UI;
-public class ExamineSystem : MonoBehaviour
+public class ShowCanvas: MonoBehaviour
 {
     private Canvas ExamineCanvas; 
 
@@ -28,7 +28,7 @@ public class ExamineSystem : MonoBehaviour
         
     }
 
-    public void showExamine()
+    public void showtheCanvas()
     {
         visible = !visible;
         ExamineCanvas.gameObject.SetActive(visible);

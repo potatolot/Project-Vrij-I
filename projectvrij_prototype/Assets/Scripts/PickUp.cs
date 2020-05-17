@@ -6,28 +6,46 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     public Transform dest;
-    Control control;
+    
+    bool pickedup = false;
 
     private void Start()
     {
-        control = GameObject.Find("Control").GetComponent<Control>();
+       
     }
-    void OnMouseOver() 
+
+    private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        Debug.Log("pickedup=" + pickedup);
+       
+    }
+
+    void OnMouseOver()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            PickUpItem();
+        }
+    }
+
+    void PickUpItem()
+    {
+        if (!pickedup)
         {
             GetComponent<Rigidbody>().useGravity = false; //turn off gravity
             this.transform.position = dest.position;
             this.transform.parent = GameObject.Find("Destination").transform;
+            pickedup = true;
         }
+        else
+        {
+            this.transform.parent = null;
+            GetComponent<Rigidbody>().useGravity = true;
+            pickedup = false;
+        }
+            
     }
 
-    void OnMouseExit() //this doesn't work but I'm gonna fix it later
-    { 
-
-       this.transform.parent = null;
-       GetComponent<Rigidbody>().useGravity = true;
-
-    }
+        
 
 }

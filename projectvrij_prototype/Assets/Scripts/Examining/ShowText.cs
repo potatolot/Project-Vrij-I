@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class TextEx : MonoBehaviour
+public class ShowText : MonoBehaviour
 {
     [SerializeField]
     private string responseText = "";
