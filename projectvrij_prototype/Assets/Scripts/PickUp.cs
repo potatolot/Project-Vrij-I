@@ -16,7 +16,7 @@ public class PickUp : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("pickedup=" + pickedup);
+        
        
     }
 
@@ -33,15 +33,23 @@ public class PickUp : MonoBehaviour
         if (!pickedup)
         {
             GetComponent<Rigidbody>().useGravity = false; //turn off gravity
+            GetComponent<Rigidbody>().freezeRotation = true;
             this.transform.position = dest.position;
             this.transform.parent = GameObject.Find("Destination").transform;
+
+
             pickedup = true;
+            Debug.Log("pickedup=" + pickedup);
+
         }
         else
         {
+
             this.transform.parent = null;
             GetComponent<Rigidbody>().useGravity = true;
+            GetComponent<Rigidbody>().freezeRotation = false;
             pickedup = false;
+            Debug.Log("pickedup=" + pickedup);
         }
             
     }
