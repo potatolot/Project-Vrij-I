@@ -33,7 +33,7 @@ public class PlannetTrigger : MonoBehaviour
             else
             {
                 textCanvas.GetComponentInChildren<Text>().text = other.GetComponent<Planet>().GetText();
-                textCanvas.enabled = true;
+                
             }
 
             
