@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FridgeDoor : MonoBehaviour
+public class FridgeDoor1 : MonoBehaviour
 {
     GameObject PlayerObject;
 
@@ -33,7 +33,7 @@ public class FridgeDoor : MonoBehaviour
         //how do you make it closed again 
         if (!fDoorOpen &&  distance < minDistanceToObject)
         {
-            Quaternion targetRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+            Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
             this.transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, 2.0f);
             fDoorOpen = true;
         }
