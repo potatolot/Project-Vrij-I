@@ -7,9 +7,6 @@ public class Examine : MonoBehaviour
 {
     GameObject ExamineText;
     GameObject PlayerObject;
-    GameObject ExaminableObj;
-
-    GameObject bla;
 
     ShowCanvas showcanvas;
 
@@ -24,11 +21,6 @@ public class Examine : MonoBehaviour
         ExamineText = GameObject.Find("ExamineText");
 
         showcanvas = GameObject.Find("ExamineCanvas").GetComponent<ShowCanvas>();
-
-        ExaminableObj = GameObject.FindWithTag("examinable");
-
-        bla = GameObject.Find("polySurface32");
-
     }
 
     // Update is called once per frame
