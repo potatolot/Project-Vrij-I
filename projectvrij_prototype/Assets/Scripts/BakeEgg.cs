@@ -17,7 +17,7 @@ public class BakeEgg : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider collision)
     {
        
             SceneManager.LoadScene("InnerWorld"); //go to inner world 

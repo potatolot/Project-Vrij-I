@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class PickUp : MonoBehaviour
 {
     public Transform dest;
+    public Rigidbody rb;
 
     bool pickedup = false;
     bool hover = false;
 
     private void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -24,13 +25,13 @@ public class PickUp : MonoBehaviour
     void OnMouseOver()
     {
         hover = true;
-        Debug.Log("hovered:" + hover);
+       // Debug.Log("hovered:" + hover);
     }
 
     private void OnMouseExit()
     {
         hover = false;
-        Debug.Log("hovered:" + hover);
+        //Debug.Log("hovered:" + hover);
     }
 
     void PickUpItem()
@@ -39,25 +40,31 @@ public class PickUp : MonoBehaviour
         { 
             if (!pickedup && hover)
         {
-            GetComponent<Rigidbody>().useGravity = false; //turn off gravity
-            GetComponent<Rigidbody>().freezeRotation = true;
+            rb.useGravity = false; //turn off gravity
+            rb.freezeRotation = true;
             this.transform.position = dest.position;
             this.transform.parent = GameObject.Find("Destination").transform;
 
 
             pickedup = true;
-            Debug.Log("pickedup=" + pickedup);
+            //Debug.Log("pickedup=" + pickedup);
 
         }
         else
         {
 
             this.transform.parent = null;
-            GetComponent<Rigidbody>().useGravity = true;
-            GetComponent<Rigidbody>().freezeRotation = false;
+            rb.useGravity = true;
+
+            rb.freezeRotation = false;
             pickedup = false;
-            Debug.Log("pickedup=" + pickedup);
+
+            //Debug.Log("pickedup=" + pickedup);
         }
+            if (!pickedup)
+            {
+                rb.useGravity = true;
+            }
         }
 
     }
