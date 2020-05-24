@@ -30,7 +30,7 @@ public class FridgeDoor1 : MonoBehaviour
     public void openUp()
     {
         float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
-        //how do you make it closed again 
+
         if (!fDoorOpen &&  distance < minDistanceToObject)
         {
             Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);

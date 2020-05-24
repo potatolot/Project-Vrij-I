@@ -9,6 +9,8 @@ public class FridgeDoor : MonoBehaviour
     float minDistanceToObject = 10;
 
     bool fDoorOpen = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class FridgeDoor : MonoBehaviour
     public void openUp()
     {
         float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
-        //how do you make it closed again 
+
         if (!fDoorOpen &&  distance < minDistanceToObject)
         {
             Quaternion targetRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
