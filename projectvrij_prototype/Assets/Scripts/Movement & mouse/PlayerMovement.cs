@@ -9,22 +9,23 @@ public class PlayerMovement : MonoBehaviour
    
     public float speed = 12f;
 
-   
-
+    public bool isActive;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<CharacterController>();
-
+        isActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if(isActive)
+        {
+            Move();
+        }
     }
-
 
     void Move()
     {

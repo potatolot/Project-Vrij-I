@@ -10,6 +10,8 @@ public class Examine : MonoBehaviour
 
     ShowCanvas showcanvas;
 
+    States states;
+
     float minDistanceToObject = 10;
 
     // Start is called before the first frame update
@@ -21,6 +23,8 @@ public class Examine : MonoBehaviour
         ExamineText = GameObject.Find("ExamineText");
 
         showcanvas = GameObject.Find("ExamineCanvas").GetComponent<ShowCanvas>();
+
+        states = GameObject.Find("StateObject").GetComponent<States>();
     }
 
     // Update is called once per frame
@@ -35,10 +39,11 @@ public class Examine : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && distance < minDistanceToObject)
         {
             //showExamine();
-            ExamineText.GetComponentInChildren<Text>().text = this. GetComponentInChildren<ShowText>().GetText();
+            ExamineText.GetComponentInChildren<Text>().text = this.GetComponentInChildren<ShowText>().GetText();
             showcanvas.showtheCanvas();
+            
         }
+       
     }
 
-   
 }

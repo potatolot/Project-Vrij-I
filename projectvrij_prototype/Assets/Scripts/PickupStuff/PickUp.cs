@@ -4,10 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PickUp : MonoBehaviour
+public class PickUp: MonoBehaviour
 {
     public Transform dest;
     public Rigidbody rb;
+    States states;
 
     bool pickedup = false;
     bool hover = false;
@@ -15,6 +16,7 @@ public class PickUp : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        states = GameObject.Find("StateObject").GetComponent<States>();
     }
 
     private void Update()
@@ -25,7 +27,8 @@ public class PickUp : MonoBehaviour
     void OnMouseOver()
     {
         hover = true;
-       // Debug.Log("hovered:" + hover);
+        // Debug.Log("hovered:" + hover);
+        
     }
 
     private void OnMouseExit()
@@ -37,26 +40,24 @@ public class PickUp : MonoBehaviour
     void PickUpItem()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        { 
-            if (!pickedup && hover)
         {
-            rb.useGravity = false; //turn off gravity
-            rb.freezeRotation = true;
-            this.transform.position = dest.position;
-            this.transform.parent = GameObject.Find("Destination").transform;
+            if (!pickedup && hover)
+            {
+                rb.useGravity = false; //turn off gravity
+                //rb.freezeRotation = true;
+                this.transform.position = dest.position;
+                this.transform.parent = GameObject.Find("Destination").transform;
 
 
-            pickedup = true;
-            //Debug.Log("pickedup=" + pickedup);
-
-        }
+                pickedup = true;
+                //Debug.Log("pickedup=" + pickedup);
+            }
         else
         {
-
             this.transform.parent = null;
             rb.useGravity = true;
 
-            rb.freezeRotation = false;
+            //rb.freezeRotation = false;
             pickedup = false;
 
             //Debug.Log("pickedup=" + pickedup);

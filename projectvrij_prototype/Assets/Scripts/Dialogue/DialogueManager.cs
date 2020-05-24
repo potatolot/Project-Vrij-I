@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour
 {
     private Queue<string> sentences;
+    public Text nameText;
+    public Text dialogueText;
+    public ShowCanvas sc;
+
+    public bool dialogueEnded = false;
 
     void Start()
     {
         sentences = new Queue<string>();
+
+        sc = GameObject.Find("ExamineCanvas").GetComponent<ShowCanvas>();
+
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        Debug.Log("starting convo with " + dialogue.name);
+        
+        sc.showtheCanvas();
+        nameText.text = dialogue.name;
 
         sentences.Clear();
 
@@ -21,8 +31,9 @@ public class DialogueManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-
+        
         DisplayNextSentence();
+        
     }
     public void DisplayNextSentence()
     {
@@ -32,11 +43,15 @@ public class DialogueManager : MonoBehaviour
             return;
         }
         string sentence = sentences.Dequeue();
-        Debug.Log(sentence);
+        dialogueText.text = sentence;
     }
 
     void EndDialogue()
     {
         Debug.Log("end of convo");
+        sc.gameObject.SetActive(false);
+        dialogueEnded = true;
+
+
     }
 }

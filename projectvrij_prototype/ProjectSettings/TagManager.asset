@@ -8,7 +8,9 @@ TagManager:
   - examinable
   - ExamineCanvas
   - fribg
-  - pickup
+  - pan
+  - EggShell
+  - PanStove
   layers:
   - Default
   - TransparentFX
