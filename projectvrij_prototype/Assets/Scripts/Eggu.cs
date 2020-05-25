@@ -13,7 +13,7 @@ public class Eggu : MonoBehaviour
     private void Awake()
     {
 
-        GameObject.Find("Egg").SetActive(false);
+       
     }
 
     // Update is called once per frame
@@ -24,7 +24,7 @@ public class Eggu : MonoBehaviour
 
     public void ShowEgg()
     {
-        GameObject.Find("Egg").SetActive(true);
+        GameObject.Find("Egg").transform.position = GameObject.Find("StoveTrigger").transform.position;
         Debug.Log("showeg");
     }
 }

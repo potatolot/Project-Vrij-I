@@ -7,14 +7,17 @@ public class BakeEggCutscene : MonoBehaviour
 {
     public bool panHit = false;
     public bool eggHit = false;
-
+    GameObject Egg;
 
     Eggu panScript;
 
+    GameObject panpos;
     // Start is called before the first frame update
     void Start()
     {
         panScript = GameObject.Find("pan").GetComponent<Eggu>();
+        panpos = GameObject.Find("PanPos");
+        Egg = GameObject.Find("Egg");
     }
 
     private void Awake()
@@ -33,14 +36,15 @@ public class BakeEggCutscene : MonoBehaviour
         {
             panHit = true;
             GameObject.Find("pan").GetComponent<PickUp>().enabled = false;
-
+            GameObject.Find("pan").transform.position = panpos.transform.position;
         }
 
         if (other.gameObject.tag == "EggShell" && panHit)
         {
             Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             eggHit = true;
-            panScript.ShowEgg();
+            Egg.transform.position = GameObject.Find("EggPos").transform.position;
+            Destroy(GameObject.FindWithTag("EggShell"));
 
         }
 

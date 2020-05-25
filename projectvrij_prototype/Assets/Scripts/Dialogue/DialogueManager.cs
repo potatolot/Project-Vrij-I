@@ -8,20 +8,23 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public ShowCanvas sc;
+    States states;
 
-    public bool dialogueEnded = false;
+    public bool isFinished = false;
+ 
 
     void Start()
     {
         sentences = new Queue<string>();
 
         sc = GameObject.Find("ExamineCanvas").GetComponent<ShowCanvas>();
+        states = GameObject.Find("StateObject").GetComponent<States>();
 
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        
+        states.currentState = States.PlayerStates.DialogueState;
         sc.showtheCanvas();
         nameText.text = dialogue.name;
 
@@ -50,8 +53,6 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("end of convo");
         sc.gameObject.SetActive(false);
-        dialogueEnded = true;
-
-
+        isFinished = true;
     }
 }
