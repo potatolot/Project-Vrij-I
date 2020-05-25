@@ -7,7 +7,7 @@ public class States : MonoBehaviour
     public enum PlayerStates
     {
         DialogueState,
-        Examine,
+        Cutscene,
         Pickup,
         Interact
     }
@@ -40,9 +40,9 @@ public class States : MonoBehaviour
                 }
                 break;
 
-            case PlayerStates.Examine:
+            case PlayerStates.Cutscene:
                 pmovement.isActive = false;
-                Debug.Log("In examining state");
+                Debug.Log("wee cutscene");
                 break;
 
             case PlayerStates.Interact:

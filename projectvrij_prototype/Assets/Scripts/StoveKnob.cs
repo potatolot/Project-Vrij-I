@@ -31,6 +31,7 @@ public class StoveKnob : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && cutscene.eggHit)
         {
             Debug.Log("turnon");
+            states.currentState = States.PlayerStates.Cutscene;
             SceneManager.LoadScene("InnerWorld");
         }
     }

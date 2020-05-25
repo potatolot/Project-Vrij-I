@@ -8,7 +8,10 @@ public class StartCutscene : MonoBehaviour
     public DialogueTrigger dialoguetrigger;
     DialogueManager dialoguemanager;
 
+    DialogueTrigger doorCutscene;
+
     States states;
+    bool DoorCutsceneTriggered = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -16,23 +19,25 @@ public class StartCutscene : MonoBehaviour
         pmovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         dialoguemanager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
         states = GameObject.Find("StateObject").GetComponent<States>();
+
+        doorCutscene = GameObject.Find("Cutscene_Door").GetComponent<DialogueTrigger>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dialoguemanager.dialogueEnded)
+        if(dialoguemanager.isFinished && DoorCutsceneTriggered)
         {
             StartCoroutine(CloseDoor());
-           
-        
-            //dialoguemanager.dialogueEnded = false;
+            dialoguemanager.isFinished = false;
+            states.currentState = States.PlayerStates.Cutscene;
         }
     }
 
     public void CutsceneTriggered()
     {
-        states.currentState = States.PlayerStates.DialogueState;
+        states.currentState = States.PlayerStates.Cutscene;
+
         // sound of knocking
 
         StartCoroutine(DoorAndDialogue());
@@ -43,20 +48,24 @@ public class StartCutscene : MonoBehaviour
 
     IEnumerator DoorAndDialogue()
     {
+        DoorCutsceneTriggered = true;
         yield return new WaitForSeconds(1);
         Quaternion targetRotation = Quaternion.Euler(0.0f, -40.0f, 0.0f);
         this.transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, 2.0f);
 
         dialoguetrigger.TriggerDialogue();
+        
     }
 
 
 
     IEnumerator CloseDoor()
     {
+       
         yield return new WaitForSeconds(1);
         Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
         this.transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, 2.0f);
+        
         Destroy(GameObject.Find("TriggerCutscene"));
         states.currentState = States.PlayerStates.Interact;
         //show what task to do!
