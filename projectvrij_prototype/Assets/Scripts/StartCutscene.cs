@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using EPOOutline;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StartCutscene : MonoBehaviour
 {
@@ -11,15 +13,16 @@ public class StartCutscene : MonoBehaviour
     DialogueTrigger doorCutscene;
 
     States states;
-    bool DoorCutsceneTriggered = false; 
-
+    public bool DoorCutsceneTriggered = false;
+    public bool DoorCutsceneDone = false;
+    Outlinable outline;
     // Start is called before the first frame update
     void Start()
     {
         pmovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
         dialoguemanager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
         states = GameObject.Find("StateObject").GetComponent<States>();
-
+        outline = GameObject.Find("Cutscene_Door").GetComponent<Outlinable>();
         doorCutscene = GameObject.Find("Cutscene_Door").GetComponent<DialogueTrigger>();
     }
 
@@ -68,6 +71,9 @@ public class StartCutscene : MonoBehaviour
         
         Destroy(GameObject.Find("TriggerCutscene"));
         states.currentState = States.PlayerStates.Interact;
+        outline.enabled = false;
+        DoorCutsceneDone = true;
         //show what task to do!
+        //askedleyla
     }
 }

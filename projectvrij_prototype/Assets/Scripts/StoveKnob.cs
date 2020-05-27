@@ -32,11 +32,16 @@ public class StoveKnob : MonoBehaviour
         {
             Debug.Log("turnon");
             states.currentState = States.PlayerStates.Cutscene;
-            SceneManager.LoadScene("InnerWorld");
+            StartCoroutine(DialogueStove());
         }
     }
 
-
+    IEnumerator DialogueStove()
+    {
+        yield return new WaitForSeconds(4);
+        dialoguetrigger.TriggerDialogue();
+        StartCoroutine(TeleportIW());
+    }
     IEnumerator TeleportIW()
     {
         yield return new WaitForSeconds(2);

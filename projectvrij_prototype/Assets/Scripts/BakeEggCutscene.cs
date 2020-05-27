@@ -9,13 +9,10 @@ public class BakeEggCutscene : MonoBehaviour
     public bool eggHit = false;
     GameObject Egg;
 
-    Eggu panScript;
-
     GameObject panpos;
     // Start is called before the first frame update
     void Start()
     {
-        panScript = GameObject.Find("pan").GetComponent<Eggu>();
         panpos = GameObject.Find("PanPos");
         Egg = GameObject.Find("Egg");
     }
