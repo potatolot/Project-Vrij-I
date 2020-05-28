@@ -8,10 +8,11 @@ public class PuzzelManager : MonoBehaviour
     // list with puzzleparts
     [SerializeField] private List<PuzzelPiece> puzzelParts = new List<PuzzelPiece>();
 
-    // When the manager get a trigger
-    private void OnTriggerStay(Collider other)
+    private bool triggered = false;
+
+    public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && triggered)
         {
             for (int i = 0; i < puzzelParts.Count; i++)
             {
@@ -19,11 +20,21 @@ public class PuzzelManager : MonoBehaviour
                 if (!puzzelParts[i].isVisible)
                 {
                     //Makes the puzzle piece visible
-                    puzzelParts[i].SetVisible();
+                    puzzelParts[i].isVisible = true;
                     break;
                 }
             }
         }
+    }
 
+    // Sets triggered to true when another gameobject enters the collisonbox
+    private void OnTriggerEnter(Collider other)
+    {
+        triggered = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        triggered = false;
     }
 }
