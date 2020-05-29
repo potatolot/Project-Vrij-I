@@ -15,6 +15,7 @@ public class StartCutscene : MonoBehaviour
     States states;
     public bool DoorCutsceneTriggered = false;
     public bool DoorCutsceneDone = false;
+   
     Outlinable outline;
     // Start is called before the first frame update
     void Start()
@@ -43,13 +44,13 @@ public class StartCutscene : MonoBehaviour
 
         // sound of knocking
 
-        StartCoroutine(DoorAndDialogue());
+        StartCoroutine(DoorAndDialogueLayla());
         
 
 
     }
 
-    IEnumerator DoorAndDialogue()
+    IEnumerator DoorAndDialogueLayla()
     {
         DoorCutsceneTriggered = true;
         yield return new WaitForSeconds(1);
@@ -57,6 +58,7 @@ public class StartCutscene : MonoBehaviour
         this.transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, 2.0f);
 
         dialoguetrigger.TriggerDialogue();
+ 
         
     }
 

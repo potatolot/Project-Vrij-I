@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public ShowCanvas sc;
     States states;
+    public GameObject trigger;
 
     public bool isFinished = false;
  
@@ -24,6 +25,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        isFinished = false;
         states.currentState = States.PlayerStates.DialogueState;
         sc.showtheCanvas();
         nameText.text = dialogue.name;
@@ -54,5 +56,6 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end of convo");
         sc.gameObject.SetActive(false);
         isFinished = true;
+        trigger.GetComponent<scriptName>().hasFinished = true;
     }
 }

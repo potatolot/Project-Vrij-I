@@ -51,11 +51,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Active: 1
   settings:
-    PrimaryRendererScale: 1
-    InfoBufferScale: 1
-    BlurIterations: 2
-    DilateIterations: 6
-    BlurShift: 2.23
+    PrimaryRendererScale: 0.816
+    InfoBufferScale: 0.772
+    BlurIterations: 8
+    DilateIterations: 4
+    BlurShift: 2.51
     DilateShift: 3
     UsingInfoBuffer: 1
     SustainedPerformanceMode: 1

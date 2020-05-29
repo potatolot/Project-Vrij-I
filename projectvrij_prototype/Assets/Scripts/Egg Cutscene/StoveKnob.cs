@@ -9,7 +9,7 @@ public class StoveKnob : MonoBehaviour
     public DialogueTrigger dialoguetrigger;
     DialogueManager dialoguemanager;
     States states;
-
+    bool StoveCutsceneTriggered;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +22,12 @@ public class StoveKnob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        if (dialoguemanager.isFinished && StoveCutsceneTriggered)
+        {
+            
+            dialoguemanager.isFinished = false;
+            states.currentState = States.PlayerStates.Cutscene;
+        }
 
     }
 
@@ -31,7 +36,8 @@ public class StoveKnob : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E) && cutscene.eggHit)
         {
             Debug.Log("turnon");
-            states.currentState = States.PlayerStates.Cutscene;
+            StoveCutsceneTriggered = true;
+            states.currentState = States.PlayerStates.DialogueState;
             StartCoroutine(DialogueStove());
         }
     }
@@ -40,7 +46,7 @@ public class StoveKnob : MonoBehaviour
     {
         yield return new WaitForSeconds(4);
         dialoguetrigger.TriggerDialogue();
-        StartCoroutine(TeleportIW());
+        
     }
     IEnumerator TeleportIW()
     {
