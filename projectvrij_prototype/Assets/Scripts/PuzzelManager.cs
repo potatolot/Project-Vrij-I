@@ -10,9 +10,11 @@ public class PuzzelManager : MonoBehaviour
 
     private bool triggered = false;
 
+    private bool playerHoldsPiece;
+
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && triggered)
+        if (Input.GetKeyDown(KeyCode.E) && triggered/* && playerHoldsPiece*/)
         {
             for (int i = 0; i < puzzelParts.Count; i++)
             {
@@ -21,6 +23,7 @@ public class PuzzelManager : MonoBehaviour
                 {
                     //Makes the puzzle piece visible
                     puzzelParts[i].isVisible = true;
+                    playerHoldsPiece = false;
                     break;
                 }
             }
@@ -30,11 +33,13 @@ public class PuzzelManager : MonoBehaviour
     // Sets triggered to true when another gameobject enters the collisonbox
     private void OnTriggerEnter(Collider other)
     {
+        //player holds piece = other.GetComponent<Script>().checkifpiece
         triggered = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        //other.GetComponent<Script>().checkifpiece = playerHoldsPiece;
         triggered = false;
     }
 }

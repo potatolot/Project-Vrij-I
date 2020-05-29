@@ -56,6 +56,6 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("end of convo");
         sc.gameObject.SetActive(false);
         isFinished = true;
-        trigger.GetComponent<scriptName>().hasFinished = true;
+        //trigger.GetComponent<scriptName>().hasFinished = true;
     }
 }
