@@ -27,6 +27,7 @@ public class StoveKnob : MonoBehaviour
             
             dialoguemanager.isFinished = false;
             states.currentState = States.PlayerStates.Cutscene;
+            SceneManager.LoadScene("InnerWorld");
         }
 
     }
@@ -47,6 +48,7 @@ public class StoveKnob : MonoBehaviour
         yield return new WaitForSeconds(4);
         dialoguetrigger.TriggerDialogue();
         
+
     }
     IEnumerator TeleportIW()
     {

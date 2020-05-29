@@ -19,14 +19,13 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
 
         sc = GameObject.Find("ExamineCanvas").GetComponent<ShowCanvas>();
-        states = GameObject.Find("StateObject").GetComponent<States>();
+       
 
     }
 
     public void StartDialogue(Dialogue dialogue)
     {
-        isFinished = false;
-        states.currentState = States.PlayerStates.DialogueState;
+      
         sc.showtheCanvas();
         nameText.text = dialogue.name;
 
@@ -55,7 +54,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("end of convo");
         sc.gameObject.SetActive(false);
-        isFinished = true;
-        //trigger.GetComponent<scriptName>().hasFinished = true;
+    
+   
     }
 }
