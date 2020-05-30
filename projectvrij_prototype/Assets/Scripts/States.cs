@@ -8,7 +8,6 @@ public class States : MonoBehaviour
     {
         DialogueState,
         Cutscene,
-        Pickup,
         Interact
     }
 
@@ -48,11 +47,6 @@ public class States : MonoBehaviour
             case PlayerStates.Interact:
                 pmovement.isActive = true;
                 
-                break;
-
-            case PlayerStates.Pickup:
-                pmovement.isActive = true;
-                Debug.Log("In pickup state");
                 break;
         }
     }
