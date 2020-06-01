@@ -2,23 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FridgeDoor1 : MonoBehaviour
+public class EmilyDoor : MonoBehaviour
 {
     GameObject PlayerObject;
 
     float minDistanceToObject = 10;
 
     bool fDoorOpen = false;
+
+    EmilyDoor Door;
+
     // Start is called before the first frame update
     void Start()
     {
         PlayerObject = GameObject.Find("Player");
+
+        Door = GameObject.Find("Door_Leftswing (2)").GetComponent<EmilyDoor>();
     }
+
+    private void Awake()
+    {
+        //Door.enabled = false;
+    }
+
 
     void OnMouseOver()
     {
         if (Input.GetKeyDown(KeyCode.E))
-        { 
+        {
             openUp();
         }
     }
@@ -26,7 +37,7 @@ public class FridgeDoor1 : MonoBehaviour
     {
         float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
 
-        if (!fDoorOpen &&  distance < minDistanceToObject)
+        if (!fDoorOpen && distance < minDistanceToObject)
         {
             Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
             this.transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, 2.0f);

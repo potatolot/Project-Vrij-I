@@ -17,10 +17,6 @@ public class BakeEggCutscene : MonoBehaviour
         Egg = GameObject.Find("Egg");
     }
 
-    private void Awake()
-    {
-        
-    }
     // Update is called once per frame
     void Update()
     {
@@ -38,7 +34,6 @@ public class BakeEggCutscene : MonoBehaviour
 
         if (other.gameObject.tag == "EggShell" && panHit)
         {
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             eggHit = true;
             Egg.transform.position = GameObject.Find("EggPos").transform.position;
             Destroy(GameObject.FindWithTag("EggShell"));
