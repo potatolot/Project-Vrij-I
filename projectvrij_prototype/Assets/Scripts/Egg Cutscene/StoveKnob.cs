@@ -6,30 +6,32 @@ using UnityEngine.SceneManagement;
 public class StoveKnob : MonoBehaviour
 {
     BakeEggCutscene cutscene;
-    public DialogueTrigger dialoguetrigger;
-    DialogueManager dialoguemanager;
     States states;
     bool StoveCutsceneTriggered;
+    Dialogue2 dialogue2;
+    GameObject stovedialogue;
+    StoveDialogue stovedialoguescript;
     // Start is called before the first frame update
     void Start()
     {
         cutscene = GameObject.Find("StoveTrigger").GetComponent<BakeEggCutscene>();
         states = GameObject.Find("StateObject").GetComponent<States>();
-        dialoguemanager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
-
+        dialogue2 = GameObject.Find("StoveKnob").GetComponent<Dialogue2>();
+        StoveCutsceneTriggered = false;
+        stovedialogue = GameObject.Find("StoveDialogue");
+        stovedialoguescript = GameObject.Find("StoveDialogue").GetComponent<StoveDialogue>();
+        stovedialogue.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dialoguemanager.isFinished && StoveCutsceneTriggered)
+        if (StoveCutsceneTriggered)
         {
-            
-            dialoguemanager.isFinished = false;
-            states.currentState = States.PlayerStates.Cutscene;
-            SceneManager.LoadScene("InnerWorld");
+            stovedialogue.SetActive(true);
+            StopAllCoroutines();
+            Debug.Log("finished");
         }
-
     }
 
     void OnMouseOver()
@@ -39,20 +41,12 @@ public class StoveKnob : MonoBehaviour
             Debug.Log("turnon");
             StoveCutsceneTriggered = true;
             states.currentState = States.PlayerStates.DialogueState;
-            StartCoroutine(DialogueStove());
         }
     }
 
-    IEnumerator DialogueStove()
-    {
-        yield return new WaitForSeconds(4);
-        dialoguetrigger.TriggerDialogue();
-        
-
-    }
-    IEnumerator TeleportIW()
+    IEnumerator Vignetting()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("InnerWorld");
+        //start vignetting
     }
 }

@@ -6,17 +6,19 @@ using UnityEngine.UI;
 
 public class TurnonOutline : MonoBehaviour
 {
-    StartCutscene doorCutscene;
+    ContinueLaylaCutscene doorCutscene;
 
     Outlinable outlinepan;
     Outlinable outlineegg;
     Outlinable stoveknob;
+    Outlinable outlinedoor;
 
     BakeEggCutscene bakeegg;
     // Start is called before the first frame update
     void Start()
     {
-        doorCutscene = GameObject.Find("Cutscene_Door").GetComponent<StartCutscene>();
+        doorCutscene = GameObject.Find("Cutscene_Door").GetComponent<ContinueLaylaCutscene>();
+        outlinedoor = GameObject.Find("Cutscene_Door").GetComponent<Outlinable>();
         outlinepan = GameObject.Find("pan").GetComponent<Outlinable>();
         outlineegg = GameObject.Find("EggShell").GetComponent<Outlinable>();
         bakeegg = GameObject.Find("StoveTrigger").GetComponent<BakeEggCutscene>();
@@ -26,10 +28,12 @@ public class TurnonOutline : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(doorCutscene.DoorCutsceneDone)
+        if(doorCutscene.CutsceneDone)
         {
             outlinepan.enabled = true;
             outlineegg.enabled = true;
+
+            outlinedoor.enabled = false;
         }
 
         if (bakeegg.panHit)

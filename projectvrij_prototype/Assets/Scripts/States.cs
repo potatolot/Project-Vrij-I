@@ -15,13 +15,11 @@ public class States : MonoBehaviour
     public PlayerStates currentState;
 
 
-    DialogueManager dialoguemanager;
     PlayerMovement pmovement;
 
     // Start is called before the first frame update
     void Start()
     {
-        dialoguemanager = GameObject.Find("DialogueManager").GetComponent<DialogueManager>();
         pmovement = GameObject.Find("Player").GetComponent<PlayerMovement>();
     }
 
@@ -33,10 +31,6 @@ public class States : MonoBehaviour
             case PlayerStates.DialogueState:
                 Debug.Log("In dialogue state");
                 pmovement.isActive = false;
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    dialoguemanager.DisplayNextSentence();
-                }
                 break;
 
             case PlayerStates.Cutscene:
