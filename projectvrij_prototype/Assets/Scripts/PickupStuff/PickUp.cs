@@ -13,10 +13,15 @@ public class PickUp: MonoBehaviour
     bool pickedup = false;
     bool hover = false;
 
+    GameObject PlayerObject;
+
+    float minDistanceToObject = 5;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         states = GameObject.Find("StateObject").GetComponent<States>();
+        PlayerObject = GameObject.Find("Player");
     }
 
     private void Update()
@@ -39,7 +44,9 @@ public class PickUp: MonoBehaviour
 
     void PickUpItem()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
+
+        if (Input.GetKeyDown(KeyCode.E) && distance < minDistanceToObject)
         {
             if (!pickedup && hover)
             {

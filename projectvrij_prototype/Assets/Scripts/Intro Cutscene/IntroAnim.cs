@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class IntroAnim : MonoBehaviour
 {
-    Camera IntroCam;
-    Camera MainCamera;
+    public Camera MainCamera, IntroCam;
     GameObject Player;
     Animator IntroAnimAnimator;
-    // Start is called before the first frame update
+    TriggerActive ta;
     void Start()
     {
         MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         IntroCam = GameObject.Find("IntroCam").GetComponent<Camera>();
         Player = GameObject.Find("Player");
         IntroAnimAnimator = gameObject.GetComponent<Animator>();
+        ta = GameObject.Find("IntroductionParent").GetComponent<TriggerActive>();
     }
 
     private void Awake()
@@ -24,16 +24,14 @@ public class IntroAnim : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AnimationEnded()
     {
-        if (IntroAnimAnimator.GetBool("isGoing"))
-        {
-           
-        }
+
+        IntroCam.enabled = false;
+        MainCamera.enabled = true;
+        ta.ActivateIntroduction();
+        Debug.Log("animationend");
     }
 
-    //if intro camera animation is done
-    //enable player camera 
-    //setactive player 
+
 }

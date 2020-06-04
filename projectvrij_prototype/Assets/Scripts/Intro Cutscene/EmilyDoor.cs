@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class EmilyDoor : MonoBehaviour
@@ -9,22 +10,15 @@ public class EmilyDoor : MonoBehaviour
     float minDistanceToObject = 10;
 
     bool fDoorOpen = false;
-
-    EmilyDoor Door;
+  
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerObject = GameObject.Find("Player");
 
-        Door = GameObject.Find("Door_Leftswing (2)").GetComponent<EmilyDoor>();
+   
     }
-
-    private void Awake()
-    {
-        //Door.enabled = false;
-    }
-
 
     void OnMouseOver()
     {
@@ -35,6 +29,7 @@ public class EmilyDoor : MonoBehaviour
     }
     public void openUp()
     {
+        FindObjectOfType<AudioManager>().Play("DoorOpen");
         float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
 
         if (!fDoorOpen && distance < minDistanceToObject)
@@ -45,6 +40,7 @@ public class EmilyDoor : MonoBehaviour
         }
         else
         {
+            FindObjectOfType<AudioManager>().Play("DoorClose");
             Quaternion targetRotation2 = Quaternion.Euler(0.0f, 0.0f, 0.0f);
             this.transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation2, 2.0f);
             fDoorOpen = false;

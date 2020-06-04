@@ -32,13 +32,18 @@ public class TriggerLaylaCutscene : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(Dialogue1());
+        if(other.tag == "Player")
+        {
+            StartCoroutine(Dialogue1());
+            states.currentState = States.PlayerStates.Cutscene;
+
+        }
         
-        states.currentState = States.PlayerStates.Cutscene;
     }
 
     public IEnumerator Dialogue1()
     {
+        FindObjectOfType<AudioManager>().Play("Knock");
         yield return new WaitForSeconds(1);
         StartCoroutine(dialogue2.Type());
         states.currentState = States.PlayerStates.DialogueState;

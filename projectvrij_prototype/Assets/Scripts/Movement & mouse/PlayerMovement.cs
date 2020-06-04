@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 12f;
 
     public bool isActive;
-
+    bool isMoving = false;
     // Start is called before the first frame update
     void Start()
     {

@@ -25,6 +25,7 @@ public class ContinueLaylaCutscene : MonoBehaviour
     {
         if(dialogue2.hasFinished && laylaDialogue)
         {
+            FindObjectOfType<AudioManager>().Play("DoorClose");
             states.currentState = States.PlayerStates.Interact;
             Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
             this.transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, 2.0f);
@@ -35,6 +36,7 @@ public class ContinueLaylaCutscene : MonoBehaviour
 
     public void OpenDoor()
     {
+        FindObjectOfType<AudioManager>().Play("DoorOpen");
         Quaternion targetRotation = Quaternion.Euler(0.0f, -40.0f, 0.0f);
         this.transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, 2.0f);
         

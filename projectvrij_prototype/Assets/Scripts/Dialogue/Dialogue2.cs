@@ -9,12 +9,10 @@ public class Dialogue2 : MonoBehaviour
     private int index;
     public float typingSpeed;
     public Text DText;
-    ShowCanvas showcanvas;
     States states;
     public bool hasFinished = false;
     void Start()
     {
-        showcanvas = GameObject.Find("ExamineCanvas").GetComponent<ShowCanvas>();
         states = GameObject.Find("StateObject").GetComponent<States>();
     }
 
@@ -32,6 +30,7 @@ public class Dialogue2 : MonoBehaviour
         hasFinished = false;
         foreach (char letter in sentencesD[index].ToCharArray())
         {
+            FindObjectOfType<AudioManager>().Play("Typewriter");
             DText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
         }
