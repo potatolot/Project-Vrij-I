@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EPOOutline;
+using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -10,7 +11,10 @@ public class IntroMonologue : MonoBehaviour
     EmilyDoor Door;
     public Text TaskText;
     GameObject Introduction;
-    TurnonOutline outline;
+
+    TriggerActive ta;
+
+
     bool FirstCollision = false;
     // Start is called before the first frame update
     void Start()
@@ -18,17 +22,17 @@ public class IntroMonologue : MonoBehaviour
         dialogue2 = GameObject.Find("Introduction").GetComponent<Dialogue2>();
         Door = GameObject.Find("EmilyDoor").GetComponent<EmilyDoor>();
         Text TaskText = GameObject.Find("TaskText").GetComponent<Text>();
-        outline = GameObject.FindWithTag("paper").GetComponent<TurnonOutline>();
+        Introduction = GameObject.Find("Introduction");
+        ta = GameObject.Find("IntroductionParent").GetComponent<TriggerActive>();
     }
 
     void Update()
     {
         if (dialogue2.hasFinished)
         {
-            //Introduction.SetActive(false);
+            ta.DeactivateIntro();
 
             TaskText.text = "Press 'E' to pick up items";
-            outline.turnOnOutlinesIntroObjects();
         }
     }
     void OnTriggerEnter(Collider other)

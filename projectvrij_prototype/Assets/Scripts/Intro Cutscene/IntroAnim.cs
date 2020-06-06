@@ -8,6 +8,7 @@ public class IntroAnim : MonoBehaviour
     GameObject Player;
     Animator IntroAnimAnimator;
     TriggerActive ta;
+    bool hasEnded = false;
     void Start()
     {
         MainCamera = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
@@ -29,8 +30,12 @@ public class IntroAnim : MonoBehaviour
 
         IntroCam.enabled = false;
         MainCamera.enabled = true;
-        ta.ActivateIntroduction();
-        Debug.Log("animationend");
+        if(!hasEnded)
+        {
+            ta.ActivateIntroduction();
+            Debug.Log("animationend");
+            hasEnded = true;
+        }
     }
 
 

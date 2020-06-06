@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using EPOOutline;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class TriggerLaylaCutscene : MonoBehaviour
     GameObject triggerc;
 
     ContinueLaylaCutscene laylascene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,7 @@ public class TriggerLaylaCutscene : MonoBehaviour
         states = GameObject.Find("StateObject").GetComponent<States>();
         laylascene = GameObject.Find("Cutscene_Door").GetComponent<ContinueLaylaCutscene>();
         triggerc = GameObject.Find("TriggerCutscene");
+        
     }
 
     // Update is called once per frame
@@ -24,9 +27,11 @@ public class TriggerLaylaCutscene : MonoBehaviour
     { 
         if(laylaCutscene && dialogue2.hasFinished)
         {
+            FindObjectOfType<AudioManager>().Play("DoorOpen");
             laylascene.OpenDoor();
             triggerc.SetActive(false);
             StopAllCoroutines();
+            
         }
     }
 

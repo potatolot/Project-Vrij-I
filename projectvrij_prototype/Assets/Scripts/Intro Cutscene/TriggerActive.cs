@@ -14,4 +14,9 @@ public class TriggerActive : MonoBehaviour
     {
         transform.GetChild(0).gameObject.SetActive(true);
     }
+
+    public void DeactivateIntro()
+    {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
 }

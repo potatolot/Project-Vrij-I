@@ -15,7 +15,7 @@ public class PickUp: MonoBehaviour
 
     GameObject PlayerObject;
 
-    float minDistanceToObject = 5;
+    float minDistanceToObject = 8;
 
     private void Start()
     {
@@ -27,19 +27,20 @@ public class PickUp: MonoBehaviour
     private void Update()
     {
         PickUpItem();
+        
     }
 
     void OnMouseOver()
     {
         hover = true;
-        // Debug.Log("hovered:" + hover);
+     
         
     }
 
     private void OnMouseExit()
     {
         hover = false;
-        //Debug.Log("hovered:" + hover);
+      
     }
 
     void PickUpItem()
@@ -67,7 +68,7 @@ public class PickUp: MonoBehaviour
             //rb.freezeRotation = false;
             pickedup = false;
 
-            //Debug.Log("pickedup=" + pickedup);
+            Debug.Log("pickedup=" + pickedup);
         }
             if (!pickedup)
             {

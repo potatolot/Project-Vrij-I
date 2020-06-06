@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &695286463029085604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 695286463029085626}
+  - component: {fileID: 695286463029085627}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &695286463029085626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695286463029085604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10.537165, y: 1.4102252, z: 12.509388}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &695286463029085627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695286463029085604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca5bfd2daca22134c90554ab5c5c5159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Knock
+    clip: {fileID: 8300000, guid: 7cee340779ce4c14096f83736470aebf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Typewriter
+    clip: {fileID: 8300000, guid: 0672a59ddef09e84592fdb8ad5dd95d1, type: 3}
+    volume: 0.189
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Footstep
+    clip: {fileID: 8300000, guid: 6b8fb874a3d175d45ab3aac1733fdc90, type: 3}
+    volume: 0.143
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DoorOpen
+    clip: {fileID: 8300000, guid: a71504bd0647d8b43b09bfdd8babef44, type: 3}
+    volume: 0.311
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: DoorClose
+    clip: {fileID: 8300000, guid: 64af5bbf8248eea47ac50a544d91a078, type: 3}
+    volume: 0.189
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Yay
+    clip: {fileID: 8300000, guid: 40ac2b2670d72c34ebe7ce3cd5ce916f, type: 3}
+    volume: 0.189
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Typewriter
+    clip: {fileID: 8300000, guid: 0672a59ddef09e84592fdb8ad5dd95d1, type: 3}
+    volume: 0.189
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Typewriter
+    clip: {fileID: 8300000, guid: 0672a59ddef09e84592fdb8ad5dd95d1, type: 3}
+    volume: 0.189
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

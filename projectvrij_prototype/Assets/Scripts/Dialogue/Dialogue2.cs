@@ -9,12 +9,7 @@ public class Dialogue2 : MonoBehaviour
     private int index;
     public float typingSpeed;
     public Text DText;
-    States states;
     public bool hasFinished = false;
-    void Start()
-    {
-        states = GameObject.Find("StateObject").GetComponent<States>();
-    }
 
     private void Update()
     {

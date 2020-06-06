@@ -25,12 +25,13 @@ public class StoveDialogue : MonoBehaviour
     {
         StartCoroutine(dialogue2.Type());
         dialogueStoveStarted = true;
+        FindObjectOfType<AudioManager>().Play("Breathing");
     }
     
     
     IEnumerator TeleportIW()
     {
         yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("InnerWorld");
+        SceneManager.LoadScene("ProtectorScene");
     }
 }

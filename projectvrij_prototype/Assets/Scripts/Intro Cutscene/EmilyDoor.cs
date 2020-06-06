@@ -29,7 +29,7 @@ public class EmilyDoor : MonoBehaviour
     }
     public void openUp()
     {
-        FindObjectOfType<AudioManager>().Play("DoorOpen");
+        
         float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
 
         if (!fDoorOpen && distance < minDistanceToObject)
@@ -37,6 +37,7 @@ public class EmilyDoor : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
             this.transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, 2.0f);
             fDoorOpen = true;
+            FindObjectOfType<AudioManager>().Play("DoorOpen");
         }
         else
         {
