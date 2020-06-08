@@ -27,7 +27,7 @@ public class PlayerPuzzelHandler : MonoBehaviour
             }
         }
     }
-
+    
     public void Update()
     {
         print(PiecesHolding);
@@ -37,25 +37,33 @@ public class PlayerPuzzelHandler : MonoBehaviour
     // Adds when a new puzzle piece is added
     private void ManageUI(int currentPieces, int newPieces)
     {
-        /*if (newPieces < currentPieces)
-            RemovePuzzleSprite(currentPieces - newPieces);*/
+        if (newPieces < currentPieces)
+        {
+            int childIndex = puzzleCanvas.transform.childCount;
+            foreach(Transform child in puzzleCanvas.transform)
+            {
+                print("this is doing it");
+                if (childIndex > newPieces)
+                    Destroy(child.gameObject);
 
-        /*if(currentPieces < newPieces)
-            AddPuzzleSprite()*/
+                childIndex--;
+            }
+        }
+
+        if (currentPieces < newPieces)
+        {
+            for (int i = currentPieces; i < newPieces; i++)
+                AddPuzzleSprite(i);
+        }
     }
 
     private void AddPuzzleSprite(int pieceIndex)
     {
-        puzzleCanvas.AddComponent<Image>().sprite = puzzleTexture;
-        puzzleCanvas.AddComponent<Image>().gameObject.transform.position = new Vector2(pieceIndex * 64, 64);
-    }
-
-    private void RemovePuzzleSprite(int amount)
-    {
-        for(int i = 0; i < amount; i++)
-        {
-            Destroy(puzzleCanvas.GetComponents<Image>()[i]);
-        }
+        GameObject image = new GameObject();
+        image.transform.parent = puzzleCanvas.transform;
+        image.AddComponent<Image>().sprite = puzzleTexture;
+        image.transform.localScale = new Vector2(0.1f, 0.1f);
+        image.GetComponent<Image>().gameObject.transform.position = new Vector2(pieceIndex * 64, 64);
     }
 
     

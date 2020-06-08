@@ -42,17 +42,23 @@ public class PuzzelManager : MonoBehaviour
         
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        //Updates the amount of player pieces
+        other.GetComponent<PlayerPuzzelHandler>().pieces = playerPieces;
+    }
+
     // Sets triggered to true when another gameobject enters the collisonbox
     private void OnTriggerEnter(Collider other)
     {
         playerPieces = other.GetComponent<PlayerPuzzelHandler>().pieces;
-        other.GetComponent<PlayerPuzzelHandler>().pieces = 0;
+       // other.GetComponent<PlayerPuzzelHandler>().pieces = 0;
         triggered = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.GetComponent<PlayerPuzzelHandler>().pieces = playerPieces;
+      //  other.GetComponent<PlayerPuzzelHandler>().pieces = playerPieces;
         triggered = false;
     }
 }

@@ -5724,8 +5724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10e29a38ceccf28478613f731df83aeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzleCanvas: {fileID: 0}
-  puzzleTexture: {fileID: 0}
+  puzzleCanvas: {fileID: 398339147}
+  puzzleTexture: {fileID: 21300000, guid: ce98f189ebf6ead49a1301dfbfec9ea1, type: 3}
 --- !u!1 &253381452
 GameObject:
   m_ObjectHideFlags: 0
