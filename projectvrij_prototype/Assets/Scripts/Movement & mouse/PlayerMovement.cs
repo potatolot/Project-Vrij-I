@@ -26,8 +26,24 @@ public class PlayerMovement : MonoBehaviour
             Move();
             
         }
-    }
+        MovementSound();
 
+    }
+    void MovementSound()
+    {
+        //if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+        //{
+        //    GetComponent<AudioSource>().Play();
+        //    GetComponent<AudioSource>().volume = Random.Range(0.8f, 1.1f);
+        //    GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
+        //}
+            
+        //else if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && GetComponent<AudioSource>().isPlaying)
+        //{
+        //    GetComponent<AudioSource>().Stop(); // or Pause()
+
+        //}
+    }
     void Move()
     {
         //movement input

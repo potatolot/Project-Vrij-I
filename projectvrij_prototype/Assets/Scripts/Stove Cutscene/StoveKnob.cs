@@ -10,47 +10,50 @@ public class StoveKnob : MonoBehaviour
     States states;
     bool StoveCutsceneTriggered;
     Dialogue2 dialogue2;
-    GameObject stovedialogue;
+    public GameObject stovedialogue;
     StoveDialogue stovedialoguescript;
-    
+    ParticleSystem particles;
+
+    EnableStoveDialogue enablestoved;
+
+    public AudioSource fire;
+    public AudioSource fryingegg;
+    public AudioSource gasburner;
     // Start is called before the first frame update
     void Start()
     {
+        
         cutscene = GameObject.Find("StoveTrigger").GetComponent<BakeEggCutscene>();
         states = GameObject.Find("StateObject").GetComponent<States>();
         dialogue2 = GameObject.Find("StoveKnob").GetComponent<Dialogue2>();
         StoveCutsceneTriggered = false;
         stovedialogue = GameObject.Find("StoveDialogue");
-        stovedialoguescript = GameObject.Find("StoveDialogue").GetComponent<StoveDialogue>();
+        stovedialoguescript = GameObject.Find("StoveKnob").GetComponent<StoveDialogue>();
+        //particles = GameObject.Find("ParticleSystem").GetComponent<ParticleSystem>();
+        enablestoved = GameObject.Find("StoveDialogueP").GetComponent<EnableStoveDialogue>();
         
-        stovedialogue.SetActive(false);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (StoveCutsceneTriggered)
-        {
-            stovedialogue.SetActive(true);
-            StopAllCoroutines();
-            
-
-        }
     }
 
     void OnMouseOver()
     {
         if(Input.GetKeyDown(KeyCode.E) && cutscene.eggHit)
         {
-            Debug.Log("turnon");
-            StoveCutsceneTriggered = true;
-            FindObjectOfType<AudioManager>().Play("Gasburner");
+            //particles.Play();
+            stovedialoguescript.StartDialogue();
             states.currentState = States.PlayerStates.DialogueState;
-            FindObjectOfType<AudioManager>().Play("FryingEgg");
-            FindObjectOfType<AudioManager>().Play("Fire");
+            gasburner.Play();
+            StartCoroutine(Sound());
         }
     }
-
+    IEnumerator Sound()
+    {
+        yield return new WaitForSeconds(0.3f);
+        fryingegg.Play();
+        fire.Play();
+        
+    }
+    
     IEnumerator Vignetting()
     {
         yield return new WaitForSeconds(2);

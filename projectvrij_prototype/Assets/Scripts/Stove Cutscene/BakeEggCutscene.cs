@@ -15,7 +15,9 @@ public class BakeEggCutscene : MonoBehaviour
 
     Outlinable panOutline;
     Outlinable stoveKnobOutline;
-    // Outlinable stoveknob;
+
+    public AudioSource PanHit;
+    public AudioSource EggHit;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,7 @@ public class BakeEggCutscene : MonoBehaviour
         panOutline = GameObject.Find("pan").GetComponent<Outlinable>();
         EggShell = GameObject.Find("EggShell");
         stoveKnobOutline = GameObject.Find("StoveKnob").GetComponent<Outlinable>();
+        PanHit = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,13 +46,15 @@ public class BakeEggCutscene : MonoBehaviour
             panHit = true;
             GameObject.Find("pan").GetComponent<PickUp>().enabled = false;
             GameObject.Find("pan").transform.position = panpos.transform.position;
-            FindObjectOfType<AudioManager>().Play("PanHit");
-
+            PanHit.Play();
+            
         }
 
         if (other.gameObject.tag == "EggShell" && panHit)
         {
+            
             eggHit = true;
+            EggHit.Play();
             Egg.transform.position = GameObject.Find("EggPos").transform.position;
             EggShell.SetActive(false);
             Destroy(GameObject.FindWithTag("EggShell"));
@@ -57,6 +62,7 @@ public class BakeEggCutscene : MonoBehaviour
 
 
         }
+
 
     }
  }

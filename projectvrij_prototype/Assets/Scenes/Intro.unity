@@ -517,7 +517,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 18544a0335d48844e854bacf39571cfc, type: 3}
-    m_FontSize: 30
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -734,8 +734,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sentencesD:
   - My name is Emily.
-  - What you are about to see is a snippet of my life with DID.
-  - '...Or...Well, our lives. '
+  - What you are about to see is a snippet of my life with Dissociative Identity
+    Disorder.
+  - Or rather.. Our lives.
   typingSpeed: 0.04
   DText: {fileID: 17298550}
   hasFinished: 0
