@@ -39,14 +39,10 @@ public class PlayerPuzzelHandler : MonoBehaviour
     {
         if (newPieces < currentPieces)
         {
-            int childIndex = puzzleCanvas.transform.childCount;
-            foreach(Transform child in puzzleCanvas.transform)
+            for (int i = currentPieces; i > newPieces; --i) 
             {
-                print("this is doing it");
-                if (childIndex > newPieces)
-                    Destroy(child.gameObject);
-
-                childIndex--;
+               Destroy(puzzleCanvas.transform.GetChild(i-1).gameObject);
+                
             }
         }
 
@@ -62,8 +58,8 @@ public class PlayerPuzzelHandler : MonoBehaviour
         GameObject image = new GameObject();
         image.transform.parent = puzzleCanvas.transform;
         image.AddComponent<Image>().sprite = puzzleTexture;
-        image.transform.localScale = new Vector2(0.1f, 0.1f);
-        image.GetComponent<Image>().gameObject.transform.position = new Vector2(pieceIndex * 64, 64);
+        image.transform.localScale = new Vector2(0.2f, 0.2f);
+        image.GetComponent<Image>().gameObject.transform.position = new Vector2(128 + pieceIndex * 128, 32);
     }
 
     
