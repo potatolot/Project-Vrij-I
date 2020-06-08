@@ -45,14 +45,14 @@ public class PuzzelManager : MonoBehaviour
     // Sets triggered to true when another gameobject enters the collisonbox
     private void OnTriggerEnter(Collider other)
     {
-        playerPieces = other.GetComponent<PlayerPuzzelHandler>().CheckPieces();
-        other.GetComponent<PlayerPuzzelHandler>().SetPieces(0);
+        playerPieces = other.GetComponent<PlayerPuzzelHandler>().pieces;
+        other.GetComponent<PlayerPuzzelHandler>().pieces = 0;
         triggered = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        other.GetComponent<PlayerPuzzelHandler>().SetPieces(playerPieces);
+        other.GetComponent<PlayerPuzzelHandler>().pieces = playerPieces;
         triggered = false;
     }
 }

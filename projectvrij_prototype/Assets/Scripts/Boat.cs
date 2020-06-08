@@ -70,7 +70,7 @@ public class Boat : MonoBehaviour
 
         if(pieceCollected)
         {
-            other.GetComponent<PlayerPuzzelHandler>().AddPiece();
+            other.GetComponent<PlayerPuzzelHandler>().pieces++;
             print("Jup");
 
             pieceCollected = false;
