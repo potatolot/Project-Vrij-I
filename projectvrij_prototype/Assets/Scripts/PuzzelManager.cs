@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PuzzelManager : MonoBehaviour
@@ -10,36 +11,48 @@ public class PuzzelManager : MonoBehaviour
 
     private bool triggered = false;
 
-    private bool playerHoldsPiece;
+    private int playerPieces = 0;
+    private int piecesVisible = 0;
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && triggered/* && playerHoldsPiece*/)
+        if (Input.GetKeyDown(KeyCode.E) && triggered)
         {
-            for (int i = 0; i < puzzelParts.Count; i++)
+            foreach(PuzzelPiece piece in puzzelParts)
             {
                 //Checks whether the puzzle piece is not yet visible
-                if (!puzzelParts[i].isVisible)
+                if (!piece.isVisible && playerPieces != 0)
                 {
                     //Makes the puzzle piece visible
-                    puzzelParts[i].isVisible = true;
-                    playerHoldsPiece = false;
+                    piece.isVisible = true;
+                    playerPieces--;
                     break;
                 }
+                else if (piece.isVisible)
+                    piecesVisible++;
+
             }
         }
+
+        if (piecesVisible == puzzelParts.Count)
+            SceneManager.LoadScene("Apartment");
+        else
+            piecesVisible = 0;
+
+        
     }
 
     // Sets triggered to true when another gameobject enters the collisonbox
     private void OnTriggerEnter(Collider other)
     {
-        //player holds piece = other.GetComponent<Script>().checkifpiece
+        playerPieces = other.GetComponent<PlayerPuzzelHandler>().CheckPieces();
+        other.GetComponent<PlayerPuzzelHandler>().SetPieces(0);
         triggered = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //other.GetComponent<Script>().checkifpiece = playerHoldsPiece;
+        other.GetComponent<PlayerPuzzelHandler>().SetPieces(playerPieces);
         triggered = false;
     }
 }
