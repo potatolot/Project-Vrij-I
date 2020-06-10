@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using EPOOutline;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum BoatBehaviour
 {
@@ -10,6 +12,13 @@ public enum BoatBehaviour
 
 public class Boat : MonoBehaviour
 {
+    public Text TaskText;
+    public GameObject PuzzlePos;
+    public Outlinable outline;
+    public AudioSource pickup;
+
+
+
     [SerializeField]                            private AudioClip audio;
     [SerializeField]                            private BoatBehaviour behaviour;
     [Range(0.0f, 100.0f)] [SerializeField]      private float speed;
@@ -29,15 +38,18 @@ public class Boat : MonoBehaviour
     {
         GetComponent<AudioSource>().clip = audio;
         startPosition = transform.position;
+        outline = this.GetComponent<Outlinable>();
     }
 
-    private void Update()
+    void Update()
     {
         //Checks if player is collecting the puzzle piece
-        if (playerEntered && Input.GetKeyDown(KeyCode.C) && HoldsPuzzle)
+        if (playerEntered && Input.GetKeyDown(KeyCode.E) && HoldsPuzzle)
         {
             HoldsPuzzle = false;
             pieceCollected = true;
+            pickup.Play();
+            PuzzlePos.SetActive(true);
         }
     }
 
@@ -49,11 +61,17 @@ public class Boat : MonoBehaviour
                 GetComponent<AudioSource>().Play();
 
         playerEntered = true;
+
+        TaskText.text = "press 'E' to interact";
+
+        
     }
 
     private void OnTriggerExit(Collider other)
     {
         playerEntered = false;
+        outline.enabled = false;
+        TaskText.text = "";
     }
 
     private void OnTriggerStay(Collider other)

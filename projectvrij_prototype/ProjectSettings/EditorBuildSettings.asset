@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/InnerWorld.unity
     guid: 2773692eb02d3754f982da25892b6326
+  - enabled: 1
+    path: Assets/Scenes/EndTest.unity
+    guid: b5e960d1b451e0441ab42a64ba51cc69
   m_configObjects: {}

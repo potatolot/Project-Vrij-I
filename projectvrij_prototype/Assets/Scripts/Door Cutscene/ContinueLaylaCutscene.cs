@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ContinueLaylaCutscene : MonoBehaviour
 {
+    public AudioSource doorclose;
     GameObject door;
     GameObject triggerc;
     Dialogue2 dialogue2;
@@ -78,7 +79,7 @@ public class ContinueLaylaCutscene : MonoBehaviour
     {
         if (!hasPlayed)
         {
-            FindObjectOfType<AudioManager>().Play("DoorClose");
+            doorclose.Play();
             hasPlayed = true;
         }
         

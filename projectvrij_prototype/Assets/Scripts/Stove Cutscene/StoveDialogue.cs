@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class StoveDialogue : MonoBehaviour
 {
-    bool dialogueStoveStarted = false;
-    public Dialogue2 dialogue2;
+    public bool dialogueStoveStarted = false;
+    Dialogue2 dialogue2;
     public AudioSource breathing;
+
+    public GameObject sdObject;
 
     public Camera maincam;
     public ParticleSystem fire;
@@ -17,17 +19,15 @@ public class StoveDialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogue2 = GameObject.Find("StoveKnob").GetComponent<Dialogue2>();
-        StopAllCoroutines();
+        sdObject.SetActive(false);
+        dialogue2 = GameObject.Find("StoveDialogue").GetComponent<Dialogue2>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(dialogue2.hasFinished && dialogueStoveStarted)
-        {
-            StartCoroutine(TeleportIW());
-        }
+       
     }
     IEnumerator Lerpie()
     {
@@ -45,8 +45,8 @@ public class StoveDialogue : MonoBehaviour
     public void StartDialogue()
     {
         fire.Play();
-
-        StartCoroutine(dialogue2.Type());
+        sdObject.SetActive(true);
+        //StartCoroutine(dialogue2.Type());
         dialogueStoveStarted = true;
         StartCoroutine(Lerpie());
         StartCoroutine(FreakingOut());
@@ -58,9 +58,5 @@ public class StoveDialogue : MonoBehaviour
         yield return new WaitForSeconds(1f);
         breathing.Play();
     }
-    IEnumerator TeleportIW()
-    {
-        yield return new WaitForSeconds(2);
-        SceneManager.LoadScene("ProtectorScene");
-    }
+  
 }

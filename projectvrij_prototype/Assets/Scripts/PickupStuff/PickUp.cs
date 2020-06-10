@@ -33,14 +33,11 @@ public class PickUp: MonoBehaviour
     void OnMouseOver()
     {
         hover = true;
-     
-        
     }
 
     private void OnMouseExit()
     {
         hover = false;
-      
     }
 
     void PickUpItem()
@@ -55,7 +52,7 @@ public class PickUp: MonoBehaviour
                 //rb.freezeRotation = true;
                 this.transform.position = dest.position;
                 this.transform.parent = GameObject.Find("Destination").transform;
-
+                //rb.isKinematic = true;
 
                 pickedup = true;
                 //Debug.Log("pickedup=" + pickedup);
@@ -67,6 +64,8 @@ public class PickUp: MonoBehaviour
 
             //rb.freezeRotation = false;
             pickedup = false;
+
+            //rb.isKinematic = false;
 
             Debug.Log("pickedup=" + pickedup);
         }

@@ -18,11 +18,12 @@ public class BakeEggCutscene : MonoBehaviour
 
     public AudioSource PanHit;
     public AudioSource EggHit;
+
     // Start is called before the first frame update
     void Start()
     {
         panpos = GameObject.Find("PanPos");
-        Egg = GameObject.Find("Egg");
+        Egg = GameObject.Find("Egg_Updated");
         panOutline = GameObject.Find("pan").GetComponent<Outlinable>();
         EggShell = GameObject.Find("EggShell");
         stoveKnobOutline = GameObject.Find("StoveKnob").GetComponent<Outlinable>();
