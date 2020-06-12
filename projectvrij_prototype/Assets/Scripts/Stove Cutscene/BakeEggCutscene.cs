@@ -9,6 +9,7 @@ public class BakeEggCutscene : MonoBehaviour
     public bool panHit = false;
     public bool eggHit = false;
 
+    GameObject pan;
     GameObject Egg;
     GameObject EggShell;
     GameObject panpos;
@@ -28,6 +29,7 @@ public class BakeEggCutscene : MonoBehaviour
         EggShell = GameObject.Find("EggShell");
         stoveKnobOutline = GameObject.Find("StoveKnob").GetComponent<Outlinable>();
         PanHit = GetComponent<AudioSource>();
+        pan = GameObject.Find("pan");
     }
 
     // Update is called once per frame
@@ -37,31 +39,33 @@ public class BakeEggCutscene : MonoBehaviour
         {
             panOutline.enabled = false;
         }
-    }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "pan")
+        if(eggHit)
         {
-            panOutline.enabled = false;
-            panHit = true;
-            GameObject.Find("pan").GetComponent<PickUp>().enabled = false;
-            GameObject.Find("pan").transform.position = panpos.transform.position;
-            PanHit.Play();
-            
-        }
-
-        if (other.gameObject.tag == "EggShell" && panHit)
-        {
-            
-            eggHit = true;
             EggHit.Play();
             Egg.transform.position = GameObject.Find("EggPos").transform.position;
             EggShell.SetActive(false);
             Destroy(GameObject.FindWithTag("EggShell"));
             stoveKnobOutline.enabled = true;
+        }
+    }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "pan" && other.gameObject.tag == "Finish")
+        {
+            pan.transform.gameObject.tag = "pan";
+            panOutline.enabled = false;
+            panHit = true;
+            pan.transform.position = panpos.transform.position;
+            pan.transform.rotation = Quaternion.Euler(0, 180, 0);
+            PanHit.Play();  
+        }
 
+        if (other.gameObject.name == "EggShell" && panHit)
+        {
+            
+            eggHit = true;
         }
 
 

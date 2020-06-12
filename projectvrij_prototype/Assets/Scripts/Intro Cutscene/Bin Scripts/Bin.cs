@@ -36,7 +36,7 @@ public class Bin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(amountHeld);
+        
         if (amountHeld >= 3)
         {
             Debug.Log("yay");
@@ -60,7 +60,7 @@ public class Bin : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "paper")
+        if(other.tag == "Finish")
         {
             amountHeld++;
         }
@@ -68,7 +68,7 @@ public class Bin : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "paper")
+        if (other.gameObject.tag == "Finish")
         {
             amountHeld--;
         }

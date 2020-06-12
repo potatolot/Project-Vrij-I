@@ -23,9 +23,13 @@ public class EmilyDoor : MonoBehaviour
    
     }
 
-    void OnMouseDown()
+    void OnMouseOver()
     {
-        openUp();
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            openUp();
+        }
+        
     }
     public void openUp()
     {

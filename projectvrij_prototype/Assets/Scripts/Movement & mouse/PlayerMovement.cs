@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isActive;
     bool isMoving = false;
+
+    public AudioSource footsteps;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,18 +33,18 @@ public class PlayerMovement : MonoBehaviour
     }
     void MovementSound()
     {
-        //if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
-        //{
-        //    GetComponent<AudioSource>().Play();
-        //    GetComponent<AudioSource>().volume = Random.Range(0.8f, 1.1f);
-        //    GetComponent<AudioSource>().pitch = Random.Range(0.8f, 1.2f);
-        //}
-            
-        //else if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && GetComponent<AudioSource>().isPlaying)
-        //{
-        //    GetComponent<AudioSource>().Stop(); // or Pause()
+        if (Input.GetButtonDown("Horizontal") && Input.GetButtonDown("Vertical"))
+        {
+            footsteps.Play();
+            //footsteps.volume = Random.Range(0.8f, 1.1f);
+            //footsteps.pitch = Random.Range(0.8f, 1.2f);
+        }
 
-        //}
+        else if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && footsteps.isPlaying)
+        {
+            footsteps.Stop(); // or Pause()
+
+        }
     }
     void Move()
     {

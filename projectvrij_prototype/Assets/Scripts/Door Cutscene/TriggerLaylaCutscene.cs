@@ -12,6 +12,8 @@ public class TriggerLaylaCutscene : MonoBehaviour
 
     ContinueLaylaCutscene laylascene;
 
+    bool walkedIn = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,16 +35,23 @@ public class TriggerLaylaCutscene : MonoBehaviour
             StopAllCoroutines();
             
         }
+
+        if(walkedIn && Input.GetKeyDown(KeyCode.E))
+        {
+            StartCoroutine(Dialogue1());
+            states.currentState = States.PlayerStates.Cutscene;
+            walkedIn = false;
+        }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
-        {
-            StartCoroutine(Dialogue1());
-            states.currentState = States.PlayerStates.Cutscene;
+            if (other.tag == "Player")
+            {
+            walkedIn = true;
 
-        }
+            }
+        
         
     }
 
@@ -51,7 +60,6 @@ public class TriggerLaylaCutscene : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Knock");
         yield return new WaitForSeconds(1);
         StartCoroutine(dialogue2.Type());
-        states.currentState = States.PlayerStates.DialogueState;
         laylaCutscene = true;
        
         

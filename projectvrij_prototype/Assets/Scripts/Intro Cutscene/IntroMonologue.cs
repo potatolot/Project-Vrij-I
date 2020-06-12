@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class IntroMonologue : MonoBehaviour
 {
-    Dialogue2 dialogue2;
+    Dialogue_Auto dialogue;
     EmilyDoor Door;
     public Text TaskText;
     GameObject Introduction;
@@ -19,7 +19,7 @@ public class IntroMonologue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogue2 = GameObject.Find("Introduction").GetComponent<Dialogue2>();
+        dialogue = GameObject.Find("Introduction").GetComponent<Dialogue_Auto>();
         Door = GameObject.Find("EmilyDoor").GetComponent<EmilyDoor>();
         Text TaskText = GameObject.Find("TaskText").GetComponent<Text>();
         Introduction = GameObject.Find("Introduction");
@@ -28,7 +28,7 @@ public class IntroMonologue : MonoBehaviour
 
     void Update()
     {
-        if (dialogue2.hasFinished)
+        if (dialogue.hasFinished)
         {
             ta.DeactivateIntro();
 
@@ -39,7 +39,7 @@ public class IntroMonologue : MonoBehaviour
     {
         if(other.tag == "Player" && FirstCollision == false)
         {
-            StartCoroutine(dialogue2.Type());
+            StartCoroutine(dialogue.Type());
             FirstCollision = true;
             
         }
