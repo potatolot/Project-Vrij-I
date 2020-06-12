@@ -1,8 +1,26 @@
 fileFormatVersion: 2
-guid: 9e8e22264ce28934d9b333792d2afbce
+guid: 3eb41ef07e48b894193840320e35c456
 ModelImporter:
   serializedVersion: 19300
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: -8775256907434386984
+    second: Armature.001|Anim_CookingEgg
+  - first:
+      74: 4699274299699868179
+    second: Armature.001|Idle
+  - first:
+      74: 8370315610003966105
+    second: Armature.001|Sitting
+  - first:
+      74: -6991723973015678290
+    second: Armature.001|Walking
+  - first:
+      74: 5710258439787408783
+    second: Armature.001|Walking.001
+  - first:
+      74: 8830496344787250445
+    second: Armature.001|Walking.002
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -60,7 +78,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
-    normalSmoothAngle: 180
+    normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4

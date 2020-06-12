@@ -14,6 +14,8 @@ public class PlayerPuzzelHandler : MonoBehaviour
     // Puzzle Texture
     [SerializeField] private Sprite puzzleTexture;
 
+    [SerializeField] private int maxPieces = 4;
+
     // Property that manages new puzzle pieces
     public int pieces
     {
@@ -22,8 +24,8 @@ public class PlayerPuzzelHandler : MonoBehaviour
         {           
             if(PiecesHolding != value)
             {
-                ManageUI(PiecesHolding, value);
-                PiecesHolding = value;                
+                PiecesHolding = value;
+                ManageUI(PiecesHolding);                               
             }
         }
     }
@@ -35,32 +37,9 @@ public class PlayerPuzzelHandler : MonoBehaviour
 
 
     // Adds when a new puzzle piece is added
-    private void ManageUI(int currentPieces, int newPieces)
+    private void ManageUI(int newPieces)
     {
-        if (newPieces < currentPieces)
-        {
-            for (int i = currentPieces; i > newPieces; --i) 
-            {
-               Destroy(puzzleCanvas.transform.GetChild(i-1).gameObject);
-                
-            }
-        }
-
-        if (currentPieces < newPieces)
-        {
-            for (int i = currentPieces; i < newPieces; i++)
-                AddPuzzleSprite(i);
-        }
+        puzzleCanvas.GetComponentInChildren<Text>().text = newPieces.ToString() + "/" + maxPieces;
     }
-
-    private void AddPuzzleSprite(int pieceIndex)
-    {
-        GameObject image = new GameObject();
-        image.transform.parent = puzzleCanvas.transform;
-        image.AddComponent<Image>().sprite = puzzleTexture;
-        image.transform.localScale = new Vector2(0.2f, 0.2f);
-        image.GetComponent<Image>().gameObject.transform.position = new Vector2(128 + pieceIndex * 128, 32);
-    }
-
     
 }
