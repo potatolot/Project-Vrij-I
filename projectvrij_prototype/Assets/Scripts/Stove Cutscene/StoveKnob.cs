@@ -24,6 +24,8 @@ public class StoveKnob : MonoBehaviour
     AudioSource MainMusic;
 
     float minDistanceToObject = 3;
+
+    bool knobHit = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +47,7 @@ public class StoveKnob : MonoBehaviour
     {
         float distance = Vector3.Distance(this.transform.position, PlayerObject.transform.position);
 
-        if (Input.GetKeyDown(KeyCode.E) && cutscene.eggHit && distance < minDistanceToObject)
+        if (Input.GetMouseButtonDown(0) && cutscene.eggHit && distance < minDistanceToObject && !knobHit)
         {
             //particles.Play();
             stovedialoguescript.StartDialogue();
@@ -53,6 +55,7 @@ public class StoveKnob : MonoBehaviour
             gasburner.Play();
             MainMusic.pitch = -1.89f;
             StartCoroutine(Sound());
+            knobHit = true;
 
         }
     }

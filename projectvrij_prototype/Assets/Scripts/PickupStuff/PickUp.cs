@@ -33,11 +33,14 @@ public class PickUp: MonoBehaviour
     void OnMouseOver()
     {
         hover = true;
+     
+        
     }
 
     private void OnMouseExit()
     {
         hover = false;
+      
     }
 
     void PickUpItem()
