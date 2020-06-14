@@ -5,15 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Dialogue2 : MonoBehaviour
 {
+    Image mouse;
     public string[] sentencesD;
     private int index;
     public float typingSpeed;
     public Text DText;
     public bool hasFinished = false;
 
+    private void Awake()
+    {
+        mouse = GameObject.Find("mouse").GetComponent<Image>();
+        mouse.enabled = false;
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && DText.text == sentencesD[index]) //if press e and the displayed text is equal to current sentence
+        if (Input.GetMouseButton(0) && DText.text == sentencesD[index]) //if press e and the displayed text is equal to current sentence
         {
             NextSentence();
         }
@@ -21,7 +27,7 @@ public class Dialogue2 : MonoBehaviour
 
     public IEnumerator Type()
     {
-        
+        mouse.enabled = true;
         hasFinished = false;
         foreach (char letter in sentencesD[index].ToCharArray())
         {
@@ -43,7 +49,7 @@ public class Dialogue2 : MonoBehaviour
         {
             DText.text = "";
             hasFinished = true;
-   
+            mouse.enabled = false;
 
         }
     }

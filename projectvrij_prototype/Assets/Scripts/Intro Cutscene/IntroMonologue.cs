@@ -32,7 +32,7 @@ public class IntroMonologue : MonoBehaviour
         {
             ta.DeactivateIntro();
 
-            TaskText.text = "Press 'E' to pick up items";
+            //TaskText.text = "Press 'E' to pick up items";
         }
     }
     void OnTriggerEnter(Collider other)

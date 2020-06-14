@@ -36,7 +36,7 @@ public class TriggerLaylaCutscene : MonoBehaviour
             
         }
 
-        if(walkedIn && Input.GetKeyDown(KeyCode.E))
+        if(walkedIn && Input.GetMouseButton(0))
         {
             StartCoroutine(Dialogue1());
             states.currentState = States.PlayerStates.Cutscene;
@@ -48,7 +48,7 @@ public class TriggerLaylaCutscene : MonoBehaviour
     {
             if (other.tag == "Player")
             {
-            walkedIn = true;
+                 walkedIn = true;
 
             }
         

@@ -9,7 +9,7 @@ public class TriggerText : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        TaskText.text = "press 'E' to interact";
+        TaskText.text = "press left mouse button to interact";
     }
 
     private void OnTriggerExit(Collider other)

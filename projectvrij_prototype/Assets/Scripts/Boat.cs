@@ -44,7 +44,7 @@ public class Boat : MonoBehaviour
     void Update()
     {
         //Checks if player is collecting the puzzle piece
-        if (playerEntered && Input.GetKeyDown(KeyCode.E) && HoldsPuzzle)
+        if (playerEntered && Input.GetMouseButton(0) && HoldsPuzzle)
         {
             HoldsPuzzle = false;
             pieceCollected = true;
@@ -62,7 +62,7 @@ public class Boat : MonoBehaviour
 
         playerEntered = true;
 
-        TaskText.text = "press 'E' to interact";
+        //TaskText.text = "press 'E' to interact";
 
         
     }
@@ -71,7 +71,7 @@ public class Boat : MonoBehaviour
     {
         playerEntered = false;
         outline.enabled = false;
-        TaskText.text = "";
+       // TaskText.text = "";
     }
 
     private void OnTriggerStay(Collider other)

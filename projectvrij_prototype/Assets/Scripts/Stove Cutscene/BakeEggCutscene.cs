@@ -28,8 +28,9 @@ public class BakeEggCutscene : MonoBehaviour
         panOutline = GameObject.Find("pan").GetComponent<Outlinable>();
         EggShell = GameObject.Find("EggShell");
         stoveKnobOutline = GameObject.Find("StoveKnob").GetComponent<Outlinable>();
-        PanHit = GetComponent<AudioSource>();
+        //PanHit = GetComponent<AudioSource>();
         pan = GameObject.Find("pan");
+        
     }
 
     // Update is called once per frame
@@ -42,7 +43,7 @@ public class BakeEggCutscene : MonoBehaviour
 
         if(eggHit)
         {
-            EggHit.Play();
+           
             Egg.transform.position = GameObject.Find("EggPos").transform.position;
             EggShell.SetActive(false);
             Destroy(GameObject.FindWithTag("EggShell"));
@@ -66,6 +67,7 @@ public class BakeEggCutscene : MonoBehaviour
         {
             
             eggHit = true;
+            EggHit.Play();
         }
 
 

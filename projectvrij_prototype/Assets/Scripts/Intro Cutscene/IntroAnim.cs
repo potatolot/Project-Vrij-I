@@ -5,6 +5,7 @@ using UnityEngine;
 public class IntroAnim : MonoBehaviour
 {
     public Camera MainCamera, IntroCam;
+    MSMoveObjects objectScript;
     GameObject Player;
     Animator IntroAnimAnimator;
     TriggerActive ta;
@@ -16,18 +17,19 @@ public class IntroAnim : MonoBehaviour
         Player = GameObject.Find("Player");
         IntroAnimAnimator = gameObject.GetComponent<Animator>();
         ta = GameObject.Find("IntroductionParent").GetComponent<TriggerActive>();
+        objectScript = GameObject.FindWithTag("MainCamera").GetComponent<MSMoveObjects>();
     }
 
     private void Awake()
     {
         MainCamera.enabled = false;
         IntroCam.enabled = true;
-
+        //objectScript.enabled = false;
     }
 
     public void AnimationEnded()
     {
-
+        //objectScript.enabled = true;
         IntroCam.enabled = false;
         MainCamera.enabled = true;
         if(!hasEnded)

@@ -4,18 +4,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class TryOut : MonoBehaviour
 {
-    public Dialogue2 dialogue2;
+    public Dialogue2 dialogue;
 
     // Start is called before the first frame update
     void Start()
     {
-        dialogue2 = GameObject.Find("StoveDialogue").GetComponent<Dialogue2>();
+        dialogue = GameObject.Find("StoveDialogue").GetComponent<Dialogue2>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dialogue2.hasFinished)
+        if (dialogue.hasFinished)
         {
             StartCoroutine(TeleportIW());
         }
@@ -23,7 +23,7 @@ public class TryOut : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(dialogue2.Type());
+        StartCoroutine(dialogue.Type());
     }
 
     IEnumerator TeleportIW()

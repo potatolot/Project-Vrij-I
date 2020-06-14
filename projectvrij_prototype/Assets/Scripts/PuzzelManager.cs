@@ -23,7 +23,7 @@ public class PuzzelManager : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && triggered)
+        if (Input.GetMouseButtonDown(0) && triggered)
         {
             foreach(PuzzelPiece piece in puzzelParts)
             {
@@ -42,10 +42,19 @@ public class PuzzelManager : MonoBehaviour
         }
 
         if (piecesVisible == puzzelParts.Count)
+        {
             SceneManager.LoadScene("SecondApartment");
+        }
+            
         else
+        {
             piecesVisible = 0;
-
+        }
+           
+        if(Input.GetKeyDown(KeyCode.Backspace))
+        {
+            SceneManager.LoadScene("SecondApartment");
+        }
         
     }
     

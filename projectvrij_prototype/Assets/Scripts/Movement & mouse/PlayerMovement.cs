@@ -26,18 +26,20 @@ public class PlayerMovement : MonoBehaviour
         if(isActive)
         {
             Move();
-            
+            MovementSound();
+
         }
-        MovementSound();
+        
 
     }
     void MovementSound()
     {
-        if (Input.GetButtonDown("Horizontal") && Input.GetButtonDown("Vertical"))
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
         {
             footsteps.Play();
             //footsteps.volume = Random.Range(0.8f, 1.1f);
             //footsteps.pitch = Random.Range(0.8f, 1.2f);
+            Debug.Log("i'm playing");
         }
 
         else if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && footsteps.isPlaying)

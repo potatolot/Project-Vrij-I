@@ -19,5 +19,11 @@ EditorBuildSettings:
     guid: 2773692eb02d3754f982da25892b6326
   - enabled: 1
     path: Assets/Scenes/SecondApartment.unity
-    guid: 2cc871f1b99480e4f810bd0bdeabdac8
+    guid: 77b35bc530d064a42a0d4c4674d06648
+  - enabled: 1
+    path: Assets/Scenes/ThirdApartment.unity
+    guid: bfe0f991c044c654ca521d8533c174ac
+  - enabled: 1
+    path: Assets/Scenes/Laptop.unity
+    guid: 10168ed7e7121ba44933e488792f1c09
   m_configObjects: {}
