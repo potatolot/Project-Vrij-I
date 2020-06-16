@@ -72,5 +72,15 @@ public class BakeEggCutscene : MonoBehaviour
 
 
     }
- }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "pan" && other.gameObject.tag == "pan")
+        {
+            pan.transform.gameObject.tag = "Finish";
+            //
+            panHit = false;
+        }
+    }
+}
 

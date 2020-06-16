@@ -12,10 +12,9 @@ public enum BoatBehaviour
 
 public class Boat : MonoBehaviour
 {
-    public Text TaskText;
     public GameObject PuzzlePos;
-    public Outlinable outline;
     public AudioSource pickup;
+    public GameObject Player;
 
 
 
@@ -23,11 +22,11 @@ public class Boat : MonoBehaviour
     [SerializeField]                            private BoatBehaviour behaviour;
     [Range(0.0f, 100.0f)] [SerializeField]      private float speed;
     
-    [SerializeField]                            bool HoldsPuzzle = false;
+    [SerializeField]                            public bool HoldsPuzzle = false;
 
                                                 // Puzzle checks
-                                                private bool playerEntered = false;
-                                                private bool pieceCollected = false;
+                                                 bool playerEntered = false;
+                                                 bool pieceCollected = false;
                                                 
                                                 // Start position of the boat 
                                                 private Vector3 startPosition;
@@ -38,7 +37,6 @@ public class Boat : MonoBehaviour
     {
         GetComponent<AudioSource>().clip = audio;
         startPosition = transform.position;
-        outline = this.GetComponent<Outlinable>();
     }
 
     void Update()
@@ -48,7 +46,7 @@ public class Boat : MonoBehaviour
         {
             HoldsPuzzle = false;
             pieceCollected = true;
-            pickup.Play();
+            
             PuzzlePos.SetActive(true);
         }
     }
@@ -61,22 +59,18 @@ public class Boat : MonoBehaviour
                 GetComponent<AudioSource>().Play();
 
         playerEntered = true;
-
-        //TaskText.text = "press 'E' to interact";
-
         
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
-        playerEntered = false;
-        outline.enabled = false;
-       // TaskText.text = "";
+        playerEntered = false;  
     }
 
-    private void OnTriggerStay(Collider other)
+
+    void OnTriggerStay(Collider other)
     {
-                // Checks whether the boat will flee
+        // Checks whether the boat will flee
         if (behaviour == BoatBehaviour.FleeWhenNear)
         {
             float step = speed * Time.deltaTime;
@@ -86,7 +80,7 @@ public class Boat : MonoBehaviour
             transform.position += transform.forward * step;
         }
 
-        if(pieceCollected)
+        if (pieceCollected)
         {
             other.GetComponent<PlayerPuzzelHandler>().pieces++;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IntroAnim : MonoBehaviour
 {
+    public TurnoffPickup tpu;
     public Camera MainCamera, IntroCam;
     MSMoveObjects objectScript;
     GameObject Player;
@@ -37,7 +38,9 @@ public class IntroAnim : MonoBehaviour
             ta.ActivateIntroduction();
             Debug.Log("animationend");
             hasEnded = true;
+            tpu.disabledScript = false;
         }
+
     }
 
 

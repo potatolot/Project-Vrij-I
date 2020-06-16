@@ -17,17 +17,9 @@ public class FridgeDoor : MonoBehaviour
         PlayerObject = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        
-    }
-    void OnMouseOver()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        { 
-            openUp();
-        }
+        openUp();
     }
     public void openUp()
     {

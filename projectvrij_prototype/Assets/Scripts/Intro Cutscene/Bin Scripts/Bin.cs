@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Bin : MonoBehaviour
 {
+    public AudioSource PaperFall;
     public int amountHeld;
     public Text TaskText;
     EmilyDoor Door;
@@ -63,6 +64,7 @@ public class Bin : MonoBehaviour
         if(other.tag == "Finish")
         {
             amountHeld++;
+            PaperFall.Play();
         }
     }
 
