@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void MovementSound()
     {
-        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+        if (Input.GetButtonDown("Vertical"))
         {
             footsteps.Play();
             //footsteps.volume = Random.Range(0.8f, 1.1f);

@@ -8,7 +8,7 @@ public class EndCutscene : MonoBehaviour
     Animator EndScene;
     Animator Text;
 
-    bool textshow = false;
+    bool end = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,29 +18,33 @@ public class EndCutscene : MonoBehaviour
         
     }
 
+
     private void Awake()
     {
-        GameObject.FindGameObjectWithTag("music").GetComponent<SoundStart>().PlayMusic();
+        GameObject.FindGameObjectWithTag("music").GetComponent<SoundStart>().PlayMusic(); 
     }
     void Update()
     {
-       if(textshow)
-        {
-            TextS();
-        }
+       //if(textshow)
+       // {
+       //     TextS();
+       // }
+
+
     }
 
     IEnumerator showEnd()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(3);
         EndScene.Play("EndScene", 0, 0);
-        TextS();
+        StartCoroutine(ShowText());
     }
 
-    void TextS()
+    IEnumerator ShowText()
     {
-        Text.Play("TextShow", 0,0);
+        yield return new WaitForSeconds(2);
+        Text.Play("TextShow", 0, 0);
+   
     }
-
 
 }
