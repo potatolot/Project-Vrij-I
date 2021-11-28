@@ -30,11 +30,13 @@ public class States : MonoBehaviour
         {
             case PlayerStates.DialogueState:
                 Debug.Log("In dialogue state");
+                pmovement.footsteps.Stop();
                 pmovement.isActive = false;
                 break;
 
             case PlayerStates.Cutscene:
                 pmovement.isActive = false;
+                pmovement.footsteps.Stop();
                 Debug.Log("wee cutscene");
                 break;
 
