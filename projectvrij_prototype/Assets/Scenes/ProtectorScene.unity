@@ -391,8 +391,7 @@ MonoBehaviour:
   sentencesD:
   - "???: Oh dear... It\u2019s the fire again, isn\u2019t it?"
   - 'EMILY: You''d think I would be less afraid by now...  '
-  - "???: *sigh* We\u2019ll get to that later. I\u2019l'll help you with that egg
-    first."
+  - "???: *sigh* We\u2019ll get to that later. I\u2019ll help you with that egg first."
   typingSpeed: 0.04
   DText: {fileID: 1763882082}
   hasFinished: 0

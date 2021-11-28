@@ -35,7 +35,7 @@ public class EmilyDoor : MonoBehaviour
         if (!fDoorOpen && distance < minDistanceToObject)
         {
             doorOpen.Play();
-            Quaternion targetRotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
+            Quaternion targetRotation = Quaternion.Euler(0.0f, -90.0f, 0.0f);
             this.transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, 2.0f);
             fDoorOpen = true;
             

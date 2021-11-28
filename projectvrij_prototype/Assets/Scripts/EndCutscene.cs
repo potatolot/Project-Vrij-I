@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class EndCutscene : MonoBehaviour
 {
     Animator EndScene;
     Animator Text;
-    public GameObject Menu;
-    Animator Credits;
 
     bool end = false;
     // Start is called before the first frame update
@@ -19,14 +15,13 @@ public class EndCutscene : MonoBehaviour
         StartCoroutine(showEnd());
         EndScene = GameObject.Find("Panel").GetComponent<Animator>();
         Text = GameObject.Find("Text").GetComponent<Animator>();
-        Credits = GameObject.Find("Credits").GetComponent<Animator>();    
+        
     }
 
 
     private void Awake()
     {
-        GameObject.FindGameObjectWithTag("music").GetComponent<SoundStart>().PlayMusic();
-        Menu.SetActive(false);
+        GameObject.FindGameObjectWithTag("music").GetComponent<SoundStart>().PlayMusic(); 
     }
     void Update()
     {
@@ -49,18 +44,7 @@ public class EndCutscene : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         Text.Play("TextShow", 0, 0);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Menu.SetActive(true);
-        StartCoroutine(ShowCredits());
+   
     }
-    IEnumerator ShowCredits()
-    {
-        yield return new WaitForSeconds(1);
-        Credits.Play("CreditSRoll", 0, 0);
-    }
-    public void toMenu()
-    {
-        SceneManager.LoadScene("HomeMenu");
-    }
+
 }

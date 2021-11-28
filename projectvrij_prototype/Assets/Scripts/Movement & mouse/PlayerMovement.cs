@@ -29,10 +29,7 @@ public class PlayerMovement : MonoBehaviour
             MovementSound();
 
         }
-        //if(footsteps.isPlaying && !isActive)
-        //{
-        //    footsteps.Stop();
-        //}
+        
 
     }
     void MovementSound()
